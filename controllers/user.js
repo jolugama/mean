@@ -126,9 +126,44 @@ function updateUser(req, res) {
     })
 }
 
+function uploadImage(req, res) {
+    const userId = req.params.id;
+    let fileName = 'No subido...';
+
+    if (req.files) {
+        const filePath = req.files.image.path;
+        const fileSPlit = filePath.split('.');
+        console.log(fileSPlit);
+        
+       
+        const fileExt = fileSPlit[1]; 
+        fileName=fileSPlit.join('.');
+        // const fileExt = 'png';
+
+        if (fileExt === 'png' || fileExt === 'jpg' || fileExt === 'gif'){
+            User.findByIdAndUpdate(userId, {image:fileName}, (err, userUpdated)=>{
+                if(!userUpdated){
+                    res.status(404).send({message: 'No se ha podido actualizar el usuario'});
+                }else {
+                    res.status(200).send({user: userUpdated});
+                }
+            })
+        }else{
+            res.status(200).send({message:'Extensión del archivo no válida'});
+        }
+
+            console.log(fileName);
+    } else {
+        res.status(200).send({
+            message: 'No has subido ninguna imagen...'
+        });
+    }
+}
+
 module.exports = {
     pruebas,
     saveUser,
     loginUser,
-    updateUser
+    updateUser,
+    uploadImage
 }
