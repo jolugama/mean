@@ -1,8 +1,13 @@
 'use strict'
 
 const bcrypt = require('bcrypt-nodejs');
-var User = require('../models/user');
-var jwt = require('../services/jwt');
+const User = require('../models/user');
+const jwt = require('../services/jwt');
+
+const fs = require('fs');
+const path = require('path');
+
+
 
 function pruebas(req, res) {
     res.status(200).send({
@@ -134,25 +139,33 @@ function uploadImage(req, res) {
         const filePath = req.files.image.path;
         const fileSPlit = filePath.split('.');
         console.log(fileSPlit);
-        
-       
-        const fileExt = fileSPlit[1]; 
-        fileName=fileSPlit.join('.');
+
+
+        const fileExt = fileSPlit[1];
+        fileName = fileSPlit.join('.');
         // const fileExt = 'png';
 
-        if (fileExt === 'png' || fileExt === 'jpg' || fileExt === 'gif'){
-            User.findByIdAndUpdate(userId, {image:fileName}, (err, userUpdated)=>{
-                if(!userUpdated){
-                    res.status(404).send({message: 'No se ha podido actualizar el usuario'});
-                }else {
-                    res.status(200).send({user: userUpdated});
+        if (fileExt === 'png' || fileExt === 'jpg' || fileExt === 'gif') {
+            User.findByIdAndUpdate(userId, {
+                image: fileName
+            }, (err, userUpdated) => {
+                if (!userUpdated) {
+                    res.status(404).send({
+                        message: 'No se ha podido actualizar el usuario'
+                    });
+                } else {
+                    res.status(200).send({
+                        user: userUpdated
+                    });
                 }
             })
-        }else{
-            res.status(200).send({message:'Extensión del archivo no válida'});
+        } else {
+            res.status(200).send({
+                message: 'Extensión del archivo no válida'
+            });
         }
 
-            console.log(fileName);
+        console.log(fileName);
     } else {
         res.status(200).send({
             message: 'No has subido ninguna imagen...'
@@ -160,10 +173,23 @@ function uploadImage(req, res) {
     }
 }
 
+function getImageFile(req, res) {
+    let imageFile = req.params.imageFile;
+    const pathFile = `./uploads/users/${imageFile}`;
+    fs.exists(pathFile, (exists) => {
+        if (exists) {
+            res.sendFile(path.resolve(pathFile));
+        } else {
+            res.status(200).send({message: 'No existe la imagen...'});
+        }
+    })
+}
+
 module.exports = {
     pruebas,
     saveUser,
     loginUser,
     updateUser,
-    uploadImage
+    uploadImage,
+    getImageFile
 }
