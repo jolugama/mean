@@ -9,5 +9,6 @@ api.get('/probando-controlador', userController.pruebas);
 api.get('/probando-middleware', middlewareAuth.ensureAuth, userController.pruebas);
 api.post('/register', userController.saveUser);
 api.post('/login', userController.loginUser);
+api.put('/update-user/:id', middlewareAuth.ensureAuth, userController.updateUser);
 
 module.exports = api;
