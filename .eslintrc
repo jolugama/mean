@@ -1,0 +1,18 @@
+{
+    "env": {
+        "amd": true,
+        "browser": true,
+        "node": true,
+        "es6": true,
+        "mocha": true
+    },
+    "parserOptions": {
+        "sourceType": "module"
+    },
+
+    "extends": ["node","import/errors","import/warnings"],
+    "rules": {
+        "semi": 2
+    }
+
+}

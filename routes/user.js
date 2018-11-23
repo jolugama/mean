@@ -6,7 +6,9 @@ const api = express.Router();
 const middlewareAuth = require('../middleware/authenticated');
 
 const multipart = require('connect-multiparty');
-const middlewareUpload = multipart({uploadDir: './uploads/users'});
+const middlewareUpload = multipart({
+    uploadDir: './uploads/users'
+});
 
 api.get('/probando-controlador', userController.pruebas);
 api.get('/probando-middleware', middlewareAuth.ensureAuth, userController.pruebas);

@@ -2,7 +2,7 @@
  
 const mongoose = require ('mongoose');
 
-const artistSchema = mongoose.Schema({
+const artistSchema = new mongoose.Schema({
     name: String,
     description: String,
     image: String

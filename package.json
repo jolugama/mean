@@ -17,9 +17,12 @@
     "jwt-simple": "^0.5.5",
     "moment": "^2.22.2",
     "mongoose": "^5.3.12",
-    "mongoose-pagination": "^1.0.0"
+    "mongoose-pagination": "^1.0.0",
+    "mongoose-unique-validator": "^2.0.2"
   },
   "devDependencies": {
+    "eslint-config-node": "^4.0.0",
+    "eslint-plugin-import": "^2.14.0",
     "nodemon": "^1.18.6"
   }
 }

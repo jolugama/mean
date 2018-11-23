@@ -23,20 +23,20 @@ function saveUser(req, res) {
     user.name = params.name;
     user.surname = params.surname;
     user.email = params.email;
-    user.role = 'ROLE_USER';
+    user.role = params.role;
     user.image = 'null';
 
     if (params.password) {
         // encriptar contraseña y guardar datos
         bcrypt.hash(params.password, null, null, (err, hash) => {
             user.password = hash;
-            if (user.name !== null && user.surname !== null && user.email !== null &&
-                user.name.length > 3 && user.surname.length > 3 && user.email.length > 5) {
+            if (user.name !== null && user.surname !== null && user.email !== null) {
                 // guardar el usuario
                 user.save((err, userStored) => {
                     if (err) {
                         res.status(500).send({
-                            message: 'Error al guardar el usuario'
+                            message: 'Error al guardar el usuario',
+                            errors: err.errors
                         });
                     } else {
                         if (!userStored) {
