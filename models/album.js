@@ -1,14 +1,14 @@
-// 'use strict'
+'use strict'
  
-// const mongoose = require ('mongoose');
+const mongoose = require ('mongoose');
+const schema=mongoose.Schema;
 
+const albumSchema = new schema({
+    title: String,
+    description: String,
+    year: Number,
+    image: String,
+    artist: { type: schema.ObjectId, ref: 'Artist'}
+})
 
-// const albumSchema = mongoose.Schema({
-//     title: String,
-//     description: String,
-//     year: Number,
-//     image: String,
-//     artist: { type: schema.ObjectId, ref: 'Artist'}
-// })
-
-// module.exports = mongoose.model('Album',albumSchema);
+module.exports = mongoose.model('Album',albumSchema); 

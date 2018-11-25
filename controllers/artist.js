@@ -139,16 +139,80 @@ function updateArtist(req, res) {
     const update = req.body;
 
     Artist.findByIdAndUpdate(artistId, update, (err, artistUpdated) => {
-        if(err){
-            return res.status(500).send({message:'Error al guardar el artista'});
+        if (err) {
+            return res.status(500).send({
+                message: 'Error al guardar el artista'
+            });
         }
 
-        if(!artistUpdated){
-             res.status(404).send({message: 'El artista no ha sido actualizado'});
-        }else{
-            res.status(200).send({artist:artistUpdated});
+        if (!artistUpdated) {
+            res.status(404).send({
+                message: 'El artista no ha sido actualizado'
+            });
+        } else {
+            res.status(200).send({
+                artist: artistUpdated
+            });
         }
     });
+}
+
+
+function deleteArtist(req, res) {
+    const artistId = req.params.id;
+
+    Artist.findByIdAndRemove(artistId, (err, artistRemoved) => {
+        if (err) {
+            return res.status(500).send({
+                message: 'Error al guardar el artista'
+            });
+        }
+
+        if (!artistRemoved) {
+            res.status(404).send({
+                message: 'El artista no ha sido eliminado'
+            });
+        } else {
+
+            Album.find({
+                artist: artistRemoved._id
+            }).remove((err, albumRemoved) => {
+                if (err) {
+                    return res.status(500).send('Error al eliminar el album');
+                }
+
+                if (!albumRemoved) {
+                    res.status(404).send({
+                        mesage: 'El album no ha sido eliminado'
+                    });
+                } else {
+
+
+                    Song.find({
+                        album: albumRemoved._id
+                    }).remove((err, songRemoved) => {
+                        if (err) {
+                            return res.status(500).send('Error al eliminar la canción');
+                        }
+
+                        if (!songRemoved) {
+                            res.status(404).send({
+                                mesage: 'la canción no ha sido eliminado'
+                            });
+                        } else {
+                            res.status(200).send({
+                                artist: artistRemoved
+                            })
+                            
+                        }
+                    });
+
+
+                }
+            });
+        }
+
+    })
 }
 
 
@@ -157,5 +221,6 @@ module.exports = {
     saveArtist,
     getArtists,
     getArtists2,
-    updateArtist
+    updateArtist,
+    deleteArtist
 };
