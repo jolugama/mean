@@ -9,5 +9,7 @@ api.get('/artist/:id', middlewareAuth.ensureAuth, artistController.getArtist);
 api.post('/artist', middlewareAuth.ensureAuth, artistController.saveArtist);
 api.get('/artists/:page?', middlewareAuth.ensureAuth , artistController.getArtists);
 api.get('/artists2/:page?', middlewareAuth.ensureAuth , artistController.getArtists2);
+api.put('/artist/:id', middlewareAuth.ensureAuth , artistController.updateArtist);
+
 
 module.exports = api;

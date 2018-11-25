@@ -104,7 +104,7 @@ function getArtists(req, res) {
 
 function getArtists2(req, res) {
     let page;
-    const perPage=5;
+    const perPage = 5;
     if (req.params.page) {
         page = req.params.page;
     } else {
@@ -132,18 +132,23 @@ function getArtists2(req, res) {
                 })
             }
         )
+}
 
+function updateArtist(req, res) {
+    const artistId = req.params.id;
+    const update = req.body;
 
+    Artist.findByIdAndUpdate(artistId, update, (err, artistUpdated) => {
+        if(err){
+            return res.status(500).send({message:'Error al guardar el artista'});
+        }
 
-    //     return res.status(200).send({
-    //         currentPage: result.page,
-    //         pages: result.pages,
-    //         total: result.total,
-    //         artists: result.docs
-    //     });
-
-    // });
-
+        if(!artistUpdated){
+             res.status(404).send({message: 'El artista no ha sido actualizado'});
+        }else{
+            res.status(200).send({artist:artistUpdated});
+        }
+    });
 }
 
 
@@ -151,5 +156,6 @@ module.exports = {
     getArtist,
     saveArtist,
     getArtists,
-    getArtists2
+    getArtists2,
+    updateArtist
 };
