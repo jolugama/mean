@@ -203,7 +203,7 @@ function deleteArtist(req, res) {
                             res.status(200).send({
                                 artist: artistRemoved
                             })
-                            
+
                         }
                     });
 
@@ -216,11 +216,67 @@ function deleteArtist(req, res) {
 }
 
 
+function uploadImage(req, res) {
+    const artistId = req.params.id;
+    let fileName = 'No subido...';
+
+    if (req.files) {
+        const filePath = req.files.image.path;
+        const fileSPlit = filePath.split('.');
+        console.log(fileSPlit);
+
+
+        const fileExt = fileSPlit[1];
+        fileName = fileSPlit.join('.');
+        // const fileExt = 'png';
+
+        if (fileExt === 'png' || fileExt === 'jpg' || fileExt === 'gif') {
+            Artist.findByIdAndUpdate(artistId, {
+                image: fileName
+            }, (err, artistUpdated) => {
+                if (!artistUpdated) {
+                    res.status(404).send({
+                        message: 'No se ha podido actualizar el usuario'
+                    });
+                } else {
+                    res.status(200).send({
+                        artist: artistUpdated
+                    });
+                }
+            })
+        } else {
+            res.status(200).send({
+                message: 'Extensión del archivo no válida'
+            });
+        }
+
+        console.log(fileName);
+    } else {
+        res.status(200).send({
+            message: 'No has subido ninguna imagen...'
+        });
+    }
+}
+
+function getImageFile(req, res) {
+    let imageFile = req.params.imageFile;
+    const pathFile = `./uploads/artists/${imageFile}`;
+    fs.exists(pathFile, (exists) => {
+        if (exists) {
+            res.sendFile(path.resolve(pathFile));
+        } else {
+            res.status(200).send({message: 'No existe la imagen...'});
+        }
+    })
+}
+
 module.exports = {
     getArtist,
     saveArtist,
     getArtists,
     getArtists2,
     updateArtist,
-    deleteArtist
+    deleteArtist,
+    uploadImage,
+    getImageFile
 };
