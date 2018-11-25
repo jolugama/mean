@@ -1,6 +1,7 @@
 const path = require('path');
-const fs = require('fs'); 
-const mongoosePaginate = require('mongoose-pagination');
+const fs = require('fs');
+// let mongoosePaginate = require('mongoose-paginate');
+
 
 const Artist = require('../models/artist');
 const Album = require('../models/album');
@@ -66,27 +67,82 @@ function getArtists(req, res) {
     } else {
         page = 1;
     }
-    var itemsPerPage = 3;
 
-    Artist.find().sort('name').paginate(page, itemsPerPage, (err, artists, total) => {
-        if (err) {
-            res.status(500).send({
-                message: 'Error en la petición'
+    var options = {
+        sort: {
+            name: 1 // poner -1 para sentido inverso
+        },
+        limit: 5, // por página
+        page: parseInt(page)
+
+    };
+
+    Artist.paginate({}, options).then(function (result) {
+        if (!result) {
+            res.status(404).send({
+                message: 'No hay artistas!'
             });
         } else {
-            if (!artists) {
+            if (result.page > result.pages) {
                 res.status(404).send({
-                    message: 'No hay artistas!'
-                });
-            } else {
-                return res.status(200).send({
-                    currentPage:page,
-                    total,
-                    artists
+                    message: 'Página no encontrada.'
                 });
             }
         }
+
+
+        return res.status(200).send({
+            currentPage: result.page,
+            pages: result.pages,
+            total: result.total,
+            artists: result.docs
+        });
+
     });
+
+}
+
+function getArtists2(req, res) {
+    let page;
+    const perPage=5;
+    if (req.params.page) {
+        page = req.params.page;
+    } else {
+        page = 0;
+    }
+
+
+    Artist.find({}, 'name description image')
+        .skip(Number(page) * perPage)
+        .limit(perPage)
+        .exec(
+            (err, artists) => {
+                if (err) {
+                    res.status(500).send({
+                        message: 'Error de Artistas' + err
+                    })
+                }
+
+                Artist.count({}, (err, cont) => {
+                    res.status(200).send({
+                        currentPage: page,
+                        artists,
+                        total: cont
+                    })
+                })
+            }
+        )
+
+
+
+    //     return res.status(200).send({
+    //         currentPage: result.page,
+    //         pages: result.pages,
+    //         total: result.total,
+    //         artists: result.docs
+    //     });
+
+    // });
 
 }
 
@@ -94,5 +150,6 @@ function getArtists(req, res) {
 module.exports = {
     getArtist,
     saveArtist,
-    getArtists
+    getArtists,
+    getArtists2
 };
