@@ -1,0 +1,529 @@
+{
+	"info": {
+		"_postman_id": "0996717f-eaca-47e2-bd5c-423345238c9a",
+		"name": "mean",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "probando-controlador",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5555/api/probando-controlador",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"probando-controlador"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "probando-middleware",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YmY0NzY1Y2JhZjMwYzQ2YmNmOTdhOTgiLCJuYW1lIjoibWFyaW8iLCJzdXJuYW1lIjoiZ29uemFsZXoiLCJlbWFpbCI6Im1hcmlvLmdvbnphbGV6QGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpbWFnZSI6Im51bGwiLCJpYXQiOjE1NDI4MDk4NTJ9.LineEoleaFJd5Dr40i2lNMDBNk1vEFYcbZDEjrehOw0\"",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5555/api/probando-middleware",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"probando-middleware"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register sin datos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5555/api/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "mariowe",
+							"type": "text"
+						},
+						{
+							"key": "surname",
+							"value": "gonzalez",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "admins@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5555/api/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "admin",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "surname",
+							"value": "admin",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "jose@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "gethash",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5555/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YmY0NzY1Y2JhZjMwYzQ2YmNmOTdhOTgiLCJuYW1lIjoibWFyaW8iLCJzdXJuYW1lIjoiZ29uemFsZXoiLCJlbWFpbCI6Im1hcmlvLmdvbnphbGV6QGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpbWFnZSI6Im51bGwiLCJpYXQiOjE1NDI4MTQ5NDh9._lLOgKYn-ahODF0GtW3NtJNhT2WeRH30oETLdpmXB0k\"",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "juancho",
+							"type": "text"
+						},
+						{
+							"key": "surname",
+							"value": "navarro guitierrez",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5555/api/update-user/5bf592d831d22148ebb6eddf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"update-user",
+						"5bf592d831d22148ebb6eddf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload-image-user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YmY1OTJkODMxZDIyMTQ4ZWJiNmVkZGYiLCJuYW1lIjoianVhbmNobyIsInN1cm5hbWUiOiJuYXZhcnJvIGd1aXRpZXJyZXoiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpbWFnZSI6Im51bGwiLCJpYXQiOjE1NDI4MjgxNzR9.4z0ReyPCCPx6n2-JImU1J_bT0diIoTBcAwrhEFaUYKg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5555/api/upload-image-user/5bf592d831d22148ebb6eddf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"upload-image-user",
+						"5bf592d831d22148ebb6eddf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-image-user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YmY1OTJkODMxZDIyMTQ4ZWJiNmVkZGYiLCJuYW1lIjoianVhbmNobyIsInN1cm5hbWUiOiJuYXZhcnJvIGd1aXRpZXJyZXoiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpbWFnZSI6Im51bGwiLCJpYXQiOjE1NDI4MjgxNzR9.4z0ReyPCCPx6n2-JImU1J_bT0diIoTBcAwrhEFaUYKg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5555/api/get-image-user/YB9YtEMXfowVDp2RLELItaXf.png",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"get-image-user",
+						"YB9YtEMXfowVDp2RLELItaXf.png"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "artist (get)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YmY3MDdlMzRkYzRmZDc0NWM0YmIzYjQiLCJuYW1lIjoiam9zZSBsdWlzIiwic3VybmFtZSI6ImdhcmNpYSIsImVtYWlsIjoiam9zZUBnbWFpbC5jb20iLCJyb2xlIjoiQURNSU5fUk9MRSIsImltYWdlIjoibnVsbCIsImlhdCI6MTU0MjkxNjA5N30.XHoNWD0g3uHyozHpF6GKQmbtBNWhaktZVSlScpI5z6I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5555/api/artist",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"artist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "artist (post)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YmY3MDdlMzRkYzRmZDc0NWM0YmIzYjQiLCJuYW1lIjoiam9zZSBsdWlzIiwic3VybmFtZSI6ImdhcmNpYSIsImVtYWlsIjoiam9zZUBnbWFpbC5jb20iLCJyb2xlIjoiQURNSU5fUk9MRSIsImltYWdlIjoibnVsbCIsImlhdCI6MTU0MjkxNjA5N30.XHoNWD0g3uHyozHpF6GKQmbtBNWhaktZVSlScpI5z6I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5555/api/artist",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"artist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "artists",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YmY3MDdlMzRkYzRmZDc0NWM0YmIzYjQiLCJuYW1lIjoiam9zZSBsdWlzIiwic3VybmFtZSI6ImdhcmNpYSIsImVtYWlsIjoiam9zZUBnbWFpbC5jb20iLCJyb2xlIjoiQURNSU5fUk9MRSIsImltYWdlIjoibnVsbCIsImlhdCI6MTU0MjkxNjA5N30.XHoNWD0g3uHyozHpF6GKQmbtBNWhaktZVSlScpI5z6I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5555/api/artists/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"artists",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "artists2",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YmY3MDdlMzRkYzRmZDc0NWM0YmIzYjQiLCJuYW1lIjoiam9zZSBsdWlzIiwic3VybmFtZSI6ImdhcmNpYSIsImVtYWlsIjoiam9zZUBnbWFpbC5jb20iLCJyb2xlIjoiQURNSU5fUk9MRSIsImltYWdlIjoibnVsbCIsImlhdCI6MTU0MjkxNjA5N30.XHoNWD0g3uHyozHpF6GKQmbtBNWhaktZVSlScpI5z6I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5555/api/artists/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"artists",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "uptade artist",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YmY3MDdlMzRkYzRmZDc0NWM0YmIzYjQiLCJuYW1lIjoiam9zZSBsdWlzIiwic3VybmFtZSI6ImdhcmNpYSIsImVtYWlsIjoiam9zZUBnbWFpbC5jb20iLCJyb2xlIjoiQURNSU5fUk9MRSIsImltYWdlIjoibnVsbCIsImlhdCI6MTU0MjkxNjA5N30.XHoNWD0g3uHyozHpF6GKQmbtBNWhaktZVSlScpI5z6I",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "himan",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5555/api/artist/5bf81c63983edd529481f657",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"artist",
+						"5bf81c63983edd529481f657"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete artist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YmY3MDdlMzRkYzRmZDc0NWM0YmIzYjQiLCJuYW1lIjoiam9zZSBsdWlzIiwic3VybmFtZSI6ImdhcmNpYSIsImVtYWlsIjoiam9zZUBnbWFpbC5jb20iLCJyb2xlIjoiQURNSU5fUk9MRSIsImltYWdlIjoibnVsbCIsImlhdCI6MTU0MjkxNjA5N30.XHoNWD0g3uHyozHpF6GKQmbtBNWhaktZVSlScpI5z6I",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "himan",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5555/api/artist/5bf825848229af60761968cb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"artist",
+						"5bf825848229af60761968cb"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

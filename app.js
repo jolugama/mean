@@ -17,14 +17,15 @@ app.use(bodyParser.json());
 // fin configuracion body-parser
 
 // configurar cabeceras http
-app.use((req,res,next)=>{
-    res.header('Access-Control-Allow-Origin','*');
-    res.header('Access-Control-Allow-Origin','Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Allow-Request-Method');
-    res.header('Access-Controll-Alow-Methods','GET, POST, OPTIONS,PUT, DELETE');
-    res.header('Allow','GET, POST, OPTIONS,PUT, DELETE');
+//CORS middleware
+const allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'example.com');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
 
     next();
-});
+}
+app.use(allowCrossDomain);
 
 // rutas base
 app.use('/api', userRoutes); 
