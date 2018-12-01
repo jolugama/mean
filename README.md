@@ -48,7 +48,7 @@ Con el último comando se crea el package.json.
 **Paquetes necesarios:**
 
 ```bash
-npm install express bcrypt-nodejs body-parser connect-multiparty  mongoose-unique-validator jwt-simple moment mongoose mongoose-pagination --save
+$ npm install express bcrypt-nodejs body-parser connect-multiparty  mongoose-unique-validator jwt-simple moment mongoose mongoose-pagination --save
 ```
 
 ```bash
@@ -153,7 +153,7 @@ mongoose.connect('mongodb://localhost:27017/mean', options,
 Ejecuta el script
 
 ```bash
-npm start
+$ npm start
 ```
 
 Verás como salida:
