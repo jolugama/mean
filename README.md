@@ -2,7 +2,8 @@
 
 **MongoDB, ExpressJs, Angular y Node**
 
-A través de un ejemplo sencillo crea un API RESTful con NodeJs
+A través de un ejemplo sencillo crea un API RESTful con NodeJs.
+Accede al [ejemplo de github](https://github.com/jolugama/mean), así como las colecciones de *Postman* (en la misma raiz del proyecto).
 
 <!-- TOC -->
 
